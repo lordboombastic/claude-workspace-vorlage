@@ -32,7 +32,11 @@ Claude sollte sich immer über `/prime` am Session-Start orientieren, dann mit v
 │   └── commands/          # Slash-Commands, die Claude ausführen kann
 │       ├── prime.md       # /prime — Session-Initialisierung
 │       ├── create-plan.md  # /create-plan — Implementierungspläne erstellen
-│       └── implement.md   # /implement — Pläne umsetzen
+│       ├── implement.md   # /implement — Pläne umsetzen
+│       └── shutdown.md    # /shutdown — Session sauber beenden
+│   └── skills/            # Claude Code Skills
+│       ├── mcp-integration/  # MCP-Server-Integration
+│       └── skill-creator/    # Skills erstellen/verwalten
 ├── context/               # Hintergrund-Kontext über den User und das Projekt
 │                          # (Vom User mit Rolle, Zielen, Strategien befüllen)
 ├── plans/                 # Implementierungspläne erstellt von /create-plan
@@ -80,6 +84,18 @@ Beispiel: `/create-plan Wettbewerbs-Analyse-Command hinzufügen`
 Liest den Plan, führt jeden Schritt der Reihe nach aus, validiert die Arbeit und aktualisiert den Plan-Status.
 
 Beispiel: `/implement plans/2026-01-28-wettbewerbs-analyse-command.md`
+
+### /shutdown
+
+**Zweck:** Session sauber beenden — Workspace scannen, aufräumen, CLAUDE.md und Context aktualisieren, committen und pushen.
+
+Am Ende jeder Session ausführen. Claude wird:
+
+1. Workspace auf Konsistenz und Sauberkeit prüfen
+2. Temporäre/unnötige Dateien entfernen
+3. CLAUDE.md und Context-Dateien aktualisieren
+4. Alle Änderungen committen und pushen
+5. Zusammenfassung und Verabschiedung liefern
 
 ---
 
